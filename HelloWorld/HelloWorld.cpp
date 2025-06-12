@@ -1,20 +1,14 @@
-// HelloWorld.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// Project		: HelloWorld
+// Author		: Rune Dirk Willén
+// Date			: 12-06-2025
+// Description	: A simple Hello World program in C++ using Visual Studio.
 
-#include <iostream>
+#include <iostream>					// Include the iostream library for input/output operations
+using namespace std;				// Use the standard namespace to avoid prefixing std:: before standard functions and objects
 
-int main()
-{
-    std::cout << "Hello World!\n";
-}
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+int main()							// Main function where the program execution starts	
+{						
+	string str = "Hello world!";	// Declare a string variable and initialize it with "Hello world!"
+	cout << str << endl;			// Output "STRING" to the console followed by a new line
+	return 0;						// Return 0 to indicate successful execution
+}									// End of the main function
