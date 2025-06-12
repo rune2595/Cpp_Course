@@ -25,7 +25,7 @@ int main()
 
 	if (userChoice < 3 && !adminRights)
 	{
-		cout << "Admin rights needed to access these options." << endl;
+		cout << "Admin rights missing!" << endl;
 	}
 	else if (userChoice == 1)
 	{
@@ -49,7 +49,7 @@ int main()
 	}
 	else
 	{
-		cout << "Invalid choice. Please try again." << endl;
+		cout << "Invalid choice." << endl;
 	}
 
 	return 0;
