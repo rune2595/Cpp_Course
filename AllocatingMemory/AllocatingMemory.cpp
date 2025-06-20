@@ -1,5 +1,5 @@
 // --------------------- Project Information ---------------------
-// Project		: Allocat
+// Project		: AllocatingMemory
 // Author		: Rune Dirk Willén
 // Date			: 20-06-2025
 // Description	: A simple program exploring returning objects from functions in C++.
@@ -56,17 +56,7 @@ int main()
 		pAnimal[i].speak();
 	}
 
-	delete[] pAnimal;
-
-
-
-
-
-
-
-
-
-
+	delete [] pAnimal;
 
     return 0;
 }
