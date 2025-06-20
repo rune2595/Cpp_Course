@@ -9,60 +9,64 @@
 #include <iostream>
 using namespace std;
 
+void reverseStringWhile(char *charArray, int charArrayLength)	// Function to reverse a character array using a while loop
+{																// Void is used as the function modifies the memory address of the character array
+	
+	cout << "Character array to modify: " << charArray << endl;	// Print the character array passed to the function
+	
+	char *pStart = charArray;									// Pointer to the start of the character array
+	char *pEnd = charArray + charArrayLength - 1;				// Pointer to the end of the character array (pointer size, not actual length)
+	
+	while (pStart < pEnd)
+	{
+		char dummy = *pStart;									// Store the character at the start pointer
+		*pStart = *pEnd;										// Swap the character at the start pointer with the character at the end pointer
+		*pEnd = dummy;											// Assign the stored character to the end pointer
+
+		pStart++;												// Move the start pointer forward
+		pEnd--;													// Move the end pointer backward
+	}
+}
+
+void reverseStringFor(char* charArray, int charArrayLength)		// Function to reverse a character array using a for loop
+{																// Void is used as the function modifies the memory address of the character array
+	
+	cout << "Character array to modify: " << charArray << endl;	// Print the character array passed to the function
+
+	for (int i = 0; i < (charArrayLength)/2; i++)
+	{
+		char dummy = charArray[i];								// Store the character at the current index
+		charArray[i] = charArray[charArrayLength - i - 1];		// Swap the character at the current index with the character at the corresponding index from the end
+		charArray[charArrayLength - i - 1] = dummy;				// Assign the stored character to the corresponding index from the end
+	}
+}
+
+
 int main()
 {
-    	cout << "-------------------------" << endl;  // Print a separator line
-	cout << "Reversing a string in C++ using while loop" << endl;  // Print the title of the program
+    cout << "==========================================" << endl;	// Print a separator line
+	cout << "Reversing a string in C++ using while loop" << endl;	// Print the title of the program
+	cout << "------------------------------------------" << endl;	// Print a separator line
 
-	char text1[] = "hello, world!";
+	char text[] = "hello, world!";									// Declare a character array with a string
+	cout << "Original string: " << text << endl;					// Print the original string
 
-	int nChars1 = sizeof(text1) - 1;		// Calculate the number of characters in the string (-1 for null terminator)
+	int nChars = sizeof(text) - 1;									// Calculate the number of characters in the string (-1 for null terminator)
 
-	cout << nChars1 << endl;
+	reverseStringWhile(text, nChars);								// Reverse the string using the while loop function
 
-	cout << "Original string: " << text1 << endl;  // Print the original string
-	
-	char *pStart1 = text1;  // Pointer to the start of the string
-	char *pEnd1 = text1 + nChars1 - 1;  // Pointer to the end of the string (excluding null terminator)
+	int nCharsAfter = sizeof(text) - 1;								// Check the number of characters after reversal
+	cout << nCharsAfter << endl;									// Print the number of characters after reversal
 
-	while (pStart1 < pEnd1)
-	{
-		char dummy1 = *pStart1;	// Store the character at the start pointer
-		*pStart1 = *pEnd1;		// Swap the character at the start pointer with the character at the end pointer
-		*pEnd1 = dummy1;			// Assign the stored character to the end pointer
+	cout << "Reversed string: " << text << endl;					// Print the reversed string
 
-		pStart1++;				// Move the start pointer forward
-		pEnd1--;				// Move the end pointer backward
-	}
+	cout << "========================================" << endl;		// Print a separator line
+	cout << "Reversing a string in C++ using for loop" << endl;		// Print the title of the program
+	cout << "----------------------------------------" << endl;		// Print a separator line
 
-	int nCharsAfter = sizeof(text1) - 1;  // Calculate the number of characters in the string after reversal
-	cout << nCharsAfter << endl;  // Print the number of characters after reversal
+	reverseStringFor(text, nChars);									// Reverse the string using the for loop function
 
-	cout << "Reversed string: " << text1 << endl;  // Print the reversed string
-
-	cout << "-------------------------" << endl;  // Print a separator line
-	cout << "Reversing a string in C++ using for loop" << endl;  // Print the title of the program
-
-	char text2[] = "hello, world!";
-
-	int nChars2 = sizeof(text2) - 1;  // Calculate the number of characters in the string (-1 for null terminator)
-
-	cout << nChars2 << endl;
-
-	cout << "Original string: " << text2 << endl;  // Print the original string
-
-	for(int i = 0; i < (nChars2)/2; i++)
-	{
-		char dummy2 = text2[i];  // Store the character at the current index
-		text2[i] = text2[nChars2 - i -1];
-
-		text2[nChars2 - i - 1] = dummy2;
-	}
-
-	int nCharsAfter2 = sizeof(text2) - 1;  // Calculate the number of characters in the string after reversal
-	cout << nCharsAfter2 << endl;  // Print the number of characters after reversal
-
-	cout << "Reversed string: " << text2 << endl;  // Print the reversed string
+	cout << "Reversing back using for loop: " << text << endl;		// Print the reversed string after using the for loop
 
     return 0;
 }
