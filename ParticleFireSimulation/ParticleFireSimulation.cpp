@@ -31,7 +31,6 @@ int main()
 
     Swarm swarm;
 
-
     // Initialize "game loop", used by games and GUI programs to keep displaying
     while (true)
     {
@@ -40,8 +39,8 @@ int main()
         swarm.update(elapsed);
 
         // Draw particles
-        unsigned char red   = (1 + sin(elapsed * 0.0002)) * 128;
-        unsigned char green = (1 + sin(elapsed * 0.0001)) * 128;
+        unsigned char red   = (1 + sin(elapsed * 0.0001)) * 128;
+        unsigned char green = (1 + sin(elapsed * 0.0002)) * 128;
         unsigned char blue  = (1 + sin(elapsed * 0.0003)) * 128;
 
         const Particle* const pParticles = swarm.getParticles();
