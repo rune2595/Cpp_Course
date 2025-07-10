@@ -27,6 +27,7 @@ private:
 	SDL_Renderer* m_renderer;
 	SDL_Texture* m_texture;
 	Uint32* m_buffer;
+	Uint32* m_blurBuffer;
 
 public:
 	ScreenGraphics();
@@ -36,6 +37,7 @@ public:
 	bool processEvents();
 	void close();
 	void clear();
+	void boxBlur(int rows, int columns);
 
 
 };

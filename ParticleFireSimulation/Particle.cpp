@@ -7,36 +7,49 @@
 
 #include "Particle.h"
 #include <stdlib.h>
+#include <corecrt_math_defines.h>
+
+using namespace std;
 
 namespace rdw
 {
 
-Particle::Particle()
+Particle::Particle(): m_x(0), m_y(0), interval(0)
 {
-	m_x = ((2.0 * rand()) / RAND_MAX) - 1;
-	m_y = ((2.0 * rand()) / RAND_MAX) - 1;
+	init();
+}
+void Particle::init()
+{
+	m_x = 0;
+	m_y = 0;
+	m_Direction = (2 * M_PI * rand()) / RAND_MAX;
+	m_Speed = (0.02 * rand()) / RAND_MAX;
 
-	m_xspeed = 0.0001 * (((2.0 * rand()) / RAND_MAX) - 1);
-	m_yspeed = 0.0001 * (((2.0 * rand()) / RAND_MAX) - 1);
+	m_Speed *= m_Speed; // Squaring the speed to increase the effect
 }
 Particle::~Particle()
 {
 
 }
-void Particle::update()
-{
-	m_x += m_xspeed;
-	m_y += m_yspeed;
+void Particle::update(int interval)
+{	
+	m_Direction += interval * 0.0003; // Adjust the direction based on the interval
 
-	if (m_x < -1.0 || m_x >= 1.0)
+	double speedX = m_Speed * cos(m_Direction);
+	double speedY = m_Speed * sin(m_Direction);
+
+	m_x += speedX * interval;
+	m_y += speedY * interval;
+
+	if (m_x < -1 || m_x > 1 || m_y < -1 || m_y > 1) // Check if the particle is out of bounds
 	{
-		m_xspeed = -m_xspeed;
-	}
-	if (m_y < -1.0 || m_y >= 1.0)
-	{
-		m_yspeed = -m_yspeed;
+		init(); // Reinitialize the particle if it is out of bounds
 	}
 
+	if (rand() < RAND_MAX / 1000)
+	{
+		init(); // Randomly reinitialize the particle
+	}
 }
 
 }
